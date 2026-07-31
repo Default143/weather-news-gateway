@@ -41,3 +41,13 @@ GET /api/v1/weather?city=Tokyo
 GET /api/v1/news?topic=apple
 
 GET /api/v1/dashboard?city=Tokyo&topic=apple
+
+## Скриншоты
+
+## Swagger UI
+
+![Swagger](screenshots/Swagger UI.png)
+
+## Dashboard API response
+
+![Dashboard](screenshots/dasboard-response.png)
