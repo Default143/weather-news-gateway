@@ -60,6 +60,44 @@ GET /api/v1/news?topic=apple
 
 GET /api/v1/dashboard?city=Tokyo&topic=apple
 
+## Архитектура
+
+Проект разделён на несколько слоёв:
+
+weather-news-gateway/
+│
+├── cmd/
+│ └── gateway/
+│ └── main.go # запуск приложения и настройка сервера
+│
+├── internal/
+│ ├── handler/ # HTTP обработчики API
+│ ├── weather/ # клиент погодного сервиса
+│ ├── news/ # клиент новостного сервиса
+│ ├── geocoding/ # получение координат города
+│ └── config/ # загрузка конфигурации
+│
+├── docs/ # Swagger-документация
+├── screenshots/ # изображения для README
+├── Dockerfile
+├── docker-compose.yml
+└── go.mod
+
+Поток обрботки запроса:
+
+Client
+|
+v
+HTTP Handler
+|
++--> Weather API
+|
++--> Geocoding API
+|
++--> News API
+|
+v
+JSON Response
 ## Скриншоты
 
 ## Swagger UI
