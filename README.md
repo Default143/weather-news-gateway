@@ -1,38 +1,43 @@
-## Weather News Gateway
+# Weather News Gateway
 
-API-шлюз на Go, который агрегирует данные о погоде и новостях.
+REST API на Go, который объединяет данные о погоде и новости из внешних сервисов.
 
 ## Возможности
 
-* получение погоды по названию города;
-* получение новостей по теме;
-* объединённый endpoint `/dashboard`;
-* кэширование запросов;
-* Swagger/OpenAPI документация;
-* Docker и Docker Compose.
+- Получение погоды по городу
+- Поиск координат через геокодирование
+- Получение новостей по теме
+- Кэширование запросов
+- Swagger-документация
+- Docker-запуск
+
+## Технологии
+
+- Go
+- Chi Router
+- Open-Meteo API
+- NewsAPI
+- Docker
+- Swagger/OpenAPI
 
 ## Запуск
 
-docker compose up --build
+Создать файл `.env`:
 
-## Swagger
+NEWS_API_KEY=your_key
 
-Открыть:
+Запуск:
 
-http://IP_WSL:8080/swagger/index.html
+go run ./cmd/gateway
 
-## Примеры запросов
+Swagger:
 
-### Погода
+http://localhost:8080/swagger/index.html
 
-curl "http://localhost:8080/api/v1/weather?city=Tokyo"
+## API
 
-### Новости
+GET /api/v1/weather?city=Tokyo
 
-curl "http://localhost:8080/api/v1/news?topic=apple"
+GET /api/v1/news?topic=apple
 
-### Dashboard
-
-curl "http://localhost:8080/api/v1/dashboard?city=Tokyo&topic=apple"
-
-
+GET /api/v1/dashboard?city=Tokyo&topic=apple
