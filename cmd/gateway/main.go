@@ -5,8 +5,13 @@
 package main
 
 import (
+	"context"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -48,9 +53,36 @@ func main() {
 
 	log.Println("server started on :8080")
 
-	err = server.ListenAndServe()
+	go func() {
+		err = server.ListenAndServe()
 
-	if err != nil {
+		if err != nil && err != http.ErrServerClosed {
+			log.Fatal(err)
+		}
+	}()
+
+	stop := make(chan os.Signal, 1)
+
+	signal.Notify(
+		stop,
+		syscall.SIGINT,
+		syscall.SIGTERM,
+	)
+
+	<-stop
+
+	log.Println("stopping server")
+
+	ctx, cancel := context.WithTimeout(
+		context.Background(),
+		5*time.Second,
+	)
+
+	defer cancel()
+
+	if err := server.Shutdown(ctx); err != nil {
 		log.Fatal(err)
 	}
+
+	log.Println("server stopped")
 }
