@@ -121,7 +121,7 @@ JSON Response
 
 - Swagger UI
 
-![Swagger](screenshots/swagger.png)
+![Swagger](screenshots/swagger.png?v=2)
 
 - Dashboard API response
 
