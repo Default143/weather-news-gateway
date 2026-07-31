@@ -125,4 +125,4 @@ JSON Response
 
 - Dashboard API response
 
-![Dashboard](screenshots/dashboard-response.png)
+![Dashboard API response](screenshots/dashboard-response.png)
