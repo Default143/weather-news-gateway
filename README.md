@@ -28,37 +28,50 @@ REST API на Go, который объединяет данные о погод
 
 Создать файл `.env`:
 
+```bash
 NEWS_API_KEY=your_key
+```
 
 Локальный запуск:
 
+```bash
 go run ./cmd/gateway
-
+```
 Запуск через Docker Compose:
 
+```bash
 docker compose up --build
-
+```
 Остановка:
 
+```bash
 docker compose down
-
+```
 Swagger:
 
+```text
 http://localhost:8080/swagger/index.html
+```
 
 ## API
 
 Получение погоды:
 
+```http
 GET /api/v1/weather?city=Tokyo
+```
 
 Получение новостей:
 
+```http
 GET /api/v1/news?topic=apple
+```
 
 Объединённый ответ:
 
+```http
 GET /api/v1/dashboard?city=Tokyo&topic=apple
+```
 
 ## Архитектура
 
@@ -106,10 +119,10 @@ JSON Response
 
 ## Скриншоты
 
-## Swagger UI
+- Swagger UI
 
 ![Swagger](screenshots/swagger.png)
 
-## Dashboard API response
+- Dashboard API response
 
 ![Dashboard](screenshots/dashboard-response.png)
