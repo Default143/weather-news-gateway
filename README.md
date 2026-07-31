@@ -1,5 +1,7 @@
 # Weather News Gateway
 
+![Go tests](https://github.com/Default143/weather-news-gateway/actions/workflows/tests.yml/badge.svg)
+
 REST API на Go, который объединяет данные о погоде и новости из внешних сервисов.
 
 ## Возможности
