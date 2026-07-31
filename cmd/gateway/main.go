@@ -5,7 +5,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -41,10 +41,16 @@ func main() {
 	r.Get("/api/v1/dashboard", handler.Dashboard)
 	r.Get("/swagger/*", httpSwagger.WrapHandler)
 
-	fmt.Println("Server started on :8080")
+	server := &http.Server{
+		Addr:    ":8080",
+		Handler: r,
+	}
 
-	err = http.ListenAndServe("0.0.0.0:8080", r)
+	log.Println("server started on :8080")
+
+	err = server.ListenAndServe()
+
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 }
