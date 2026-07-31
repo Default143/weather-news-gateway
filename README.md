@@ -83,6 +83,7 @@ weather-news-gateway/
 ├── Dockerfile
 ├── docker-compose.yml
 └── go.mod
+```
 
 Поток обрботки запроса:
 
@@ -101,6 +102,8 @@ HTTP Handler
 |
 v
 JSON Response
+```
+
 ## Скриншоты
 
 ## Swagger UI
