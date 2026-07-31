@@ -64,6 +64,7 @@ GET /api/v1/dashboard?city=Tokyo&topic=apple
 
 Проект разделён на несколько слоёв:
 
+```text
 weather-news-gateway/
 │
 ├── cmd/
@@ -85,6 +86,8 @@ weather-news-gateway/
 
 Поток обрботки запроса:
 
+```md
+```text
 Client
 |
 v
