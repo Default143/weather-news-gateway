@@ -15,10 +15,20 @@ import (
 
 	_ "weather-news-gateway/docs"
 
+	"weather-news-gateway/internal/config"
 	"weather-news-gateway/internal/handler"
 )
 
 func main() {
+
+	cfg, err := config.Load()
+
+	if err != nil {
+		panic(err)
+	}
+
+	_ = cfg
+
 	godotenv.Load()
 
 	r := chi.NewRouter()
@@ -33,7 +43,7 @@ func main() {
 
 	fmt.Println("Server started on :8080")
 
-	err := http.ListenAndServe("0.0.0.0:8080", r)
+	err = http.ListenAndServe("0.0.0.0:8080", r)
 	if err != nil {
 		panic(err)
 	}
