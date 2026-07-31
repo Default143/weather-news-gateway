@@ -1,0 +1,38 @@
+info:
+  contact: {}
+  description: API gateway for weather and news aggregation
+  title: Weather News Gateway API
+  version: "1.0"
+paths:
+  /api/v1/dashboard:
+    get:
+      description: Returns weather and news for a city and topic
+      parameters:
+      - description: City name
+        in: query
+        name: city
+        required: true
+        type: string
+      - description: News topic
+        in: query
+        name: topic
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get weather and news
+      tags:
+      - dashboard
+swagger: "2.0"
