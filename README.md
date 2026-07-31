@@ -20,7 +20,9 @@ REST API на Go, который объединяет данные о погод
 - Open-Meteo API
 - NewsAPI
 - Docker
+- Docker Compose
 - Swagger/OpenAPI
+- GitHub Actions
 
 ## Запуск
 
@@ -28,9 +30,17 @@ REST API на Go, который объединяет данные о погод
 
 NEWS_API_KEY=your_key
 
-Запуск:
+Локальный запуск:
 
 go run ./cmd/gateway
+
+Запуск через Docker Compose:
+
+docker compose up --build
+
+Остановка:
+
+docker compose down
 
 Swagger:
 
@@ -38,9 +48,15 @@ http://localhost:8080/swagger/index.html
 
 ## API
 
+Получение погоды:
+
 GET /api/v1/weather?city=Tokyo
 
+Получение новостей:
+
 GET /api/v1/news?topic=apple
+
+Объединённый ответ:
 
 GET /api/v1/dashboard?city=Tokyo&topic=apple
 
@@ -48,8 +64,8 @@ GET /api/v1/dashboard?city=Tokyo&topic=apple
 
 ## Swagger UI
 
-![Swagger](screenshots/Swagger UI.png)
+![Swagger](screenshots/swagger.png)
 
 ## Dashboard API response
 
-![Dashboard](screenshots/dasboard-response.png)
+![Dashboard](screenshots/dashboard-response.png)
